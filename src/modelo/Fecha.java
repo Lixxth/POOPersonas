@@ -1,93 +1,93 @@
 package modelo;
 
 public class Fecha {
-    private int dia;
-    private int mes;
-    private int anio;
+    private int Dia;
+    private int Mes;
+    private int Aniio;
 
     
     public Fecha() {
-        this.dia = 1;
-        this.mes = 1;
-        this.anio = 2000;
+        this.Dia = 1;
+        this.Mes = 1;
+        this.Aniio = 2000;
     }
     public Fecha(int d, int m, int a) {
         if (d > 0 && d < 31) {
-            this.dia = d;
+            this.Dia = d;
         } else {
-            this.dia = 1;
+            this.Dia = 1;
         }
 
         if (m > 0 || m < 12) {
-            this.mes = m;
+            this.Mes = m;
         } else {
-            this.mes = 1;
+            this.Mes = 1;
         }
 
         if (a > 0) {
-            this.anio = a;
+            this.Aniio = a;
         } else {
-            this.anio = 2000;
+            this.Aniio= 2000;
         }
 
         if (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) {
             if (d > 31) {
-                dia = 1;
+                Dia = 1;
             }
 
         }
         if (m == 4 || m == 6 || m == 9 || m == 11) {
             if (d > 30) {
-                dia = 1;
+                Dia = 1;
             }
 
         }
         if (m == 2) {
-            if (this.anio % 4 == 0) {
+            if (this.Aniio % 4 == 0) {
                 if (d > 28) {
-                    dia = 1;
+                    Dia = 1;
                 }
             } else {
                 if (d > 27) {
-                    dia = 1;
+                    Dia = 1;
                 }
             }
         }
     }
 
     public int getDia() {
-        return this.dia;
+        return this.Dia;
     }
 
     public void setDia(int d) {
         if (d > 0 || d < limit()) {
-            this.dia = d;
+            this.Dia = d;
         }
     }
 
     public int getMes() {
-        return this.mes;
+        return this.Mes;
     }
 
     public void setMes(int m) {
         if (m > 0 || m < 13) {
-            this.mes = m;
+            this.Mes = m;
         }
     }
 
     public int getAnio() {
-        return this.anio;
+        return this.Aniio;
     }
 
     public void setAnio(int a) {
         if (a < -1) {
-            this.anio = a;
+            this.Aniio = a;
         }
     }
 
     public boolean bisiesto() {
         boolean x;
-        if (this.anio % 4 == 0) {
+        if (this.Aniio % 4 == 0) {
             x = true;
         } else {
             x = false;
@@ -96,54 +96,54 @@ public class Fecha {
     }
 
     public void restarSumarDias(int d) {
-        this.dia = this.dia + d;
+        this.Dia = this.Dia + d;
 
-        while (this.dia > limit()) {
-            this.dia = this.dia - limit();
-            this.mes++;
-            if (this.mes > 12) {
-                this.mes = this.mes - 12;
-                this.anio++;
+        while (this.Dia > limit()) {
+            this.Dia = this.Dia - limit();
+            this.Mes++;
+            if (this.Mes > 12) {
+                this.Mes = this.Mes - 12;
+                this.Aniio++;
             }
         }
 
-        while (this.dia < 1) {
-            this.dia = this.dia + nextLimit();
-            this.mes--;
-            if (this.mes < 1) {
-                this.mes = this.mes + 12;
-                this.anio--;
+        while (this.Dia < 1) {
+            this.Dia = this.Dia + nextLimit();
+            this.Mes--;
+            if (this.Mes < 1) {
+                this.Mes = this.Mes + 12;
+                this.Aniio--;
             }
         }
 
     }
 
     public void restarSumarMeses(int m) {
-        if (this.anio - (m / 12) > 0) {
-            this.mes = this.mes + m;
-            while (this.mes > 12) {
-                this.mes = this.mes - 12;
-                this.anio++;
+        if (this.Aniio - (m / 12) > 0) {
+            this.Mes = this.Mes + m;
+            while (this.Mes > 12) {
+                this.Mes = this.Mes - 12;
+                this.Aniio++;
             }
-            while (this.mes < 0) {
-                this.mes = this.mes + 12;
-                this.anio--;
+            while (this.Mes < 0) {
+                this.Mes = this.Mes + 12;
+                this.Aniio--;
             }
         }
     }
 
     public void restarSumarAnio(int a) {
-        if (this.anio + a > 0) {
-            this.anio = this.anio + a;
+        if (this.Aniio + a > 0) {
+            this.Aniio = this.Aniio + a;
         }
     }
 
     private int limit() {
         int limit = 31;
-        if (this.mes == 4 || this.mes == 6 || this.mes == 9 || this.mes == 11) {
+        if (this.Mes == 4 || this.Mes == 6 || this.Mes == 9 || this.Mes == 11) {
             limit = 30;
         }
-        if (this.mes == 2) {
+        if (this.Mes == 2) {
             if (bisiesto() == true) {
                 limit = 29;
             } else {
@@ -156,10 +156,10 @@ public class Fecha {
 
     private int nextLimit() {
         int limit = 31;
-        if (this.mes == 5 || this.mes == 7 || this.mes == 10 || this.mes == 12) {
+        if (this.Mes == 5 || this.Mes == 7 || this.Mes == 10 || this.Mes == 12) {
             limit = 30;
         }
-        if (this.mes == 3) {
+        if (this.Mes == 3) {
             if (bisiesto() == true) {
                 limit = 29;
             } else {
@@ -171,7 +171,7 @@ public class Fecha {
     
     @Override
     public String toString(){
-        return (dia + " " + mes + " " + anio);
+        return (Dia + " " + Mes + " " + Aniio);
     }
 }
 
